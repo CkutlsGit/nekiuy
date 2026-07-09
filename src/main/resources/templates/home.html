@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Управление полками и людьми</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>Управление полками и людьми</h1>
+
+<h2>Добавить полк</h2>
+<form th:action="@{/add/rgt}" method="post">
+    <label>Номер: <input type="number" name="number" required></label>
+    <label>Название: <input type="text" name="name" required></label>
+    <button type="submit">Добавить полк</button>
+</form>
+
+<hr>
+
+<h2>Добавить человека</h2>
+<form th:action="@{/add/people}" method="post">
+    <label>ФИО: <input type="text" name="fullName" required></label>
+    <label>Возраст: <input type="number" name="age" required></label>
+    <label>Цель: <input type="text" name="purpose"></label>
+    <label>Полк:
+        <select name="regimentId" required>
+            <option value="">Выберите полк</option>
+            <option th:each="regiment : ${regiments}"
+                    th:value="${regiment.id}"
+                    th:text="${regiment.name}">
+            </option>
+        </select>
+    </label>
+    <button type="submit">Добавить человека</button>
+</form>
+
+<hr>
+
+<h2>Список</h2>
+<div th:each="regiment : ${regiments}">
+    <div>полк <span th:text="${regiment.name}"></span></div>
+    <div th:each="person : ${regiment.people}">
+        люди <span th:text="${person.fullName}"></span>
+    </div>
+    <br>
+</div>
+</body>
+</html>
