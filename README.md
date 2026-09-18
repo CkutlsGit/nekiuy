@@ -2,6 +2,8 @@
 
 Spring Java Core - Educational Application
 
+📖 **In Russian**: [перевод на русский](https://github.com/CkutlsGit/nekiuy/blob/main/README.ru.md)
+
 ## 📋 Overview
 
 An educational **Spring Java Core** application with an **H2** database, built for learning purposes. It uses **logical views** - meaning it returns a template (view) instead of a response body (JSON).
